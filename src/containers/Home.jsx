@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Search from "../components/Search";
 import Categories from "../components/Categories";
 import Carousel from "../components/Carousel";
@@ -6,7 +6,10 @@ import CarouselItem from "../components/CarouselItem";
 import "../assets/styles/App.scss";
 import { connect } from "react-redux";
 
-const Home = ({ myList = [], trends = [], originals }) => {
+const Home = ({ myList, trends, originals }) => {
+  console.log(myList, "misList");
+  console.log(trends, "trends");
+  console.log(originals, "originals");
   return (
     <>
       <Search />
