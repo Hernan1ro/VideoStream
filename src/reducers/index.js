@@ -19,6 +19,11 @@ const reducer = (state, action) => {
           ...state.myList.filter((item) => item.id !== action.payload.id),
         ],
       };
+    case "LOGIN_USER":
+      return {
+        ...state,
+        user: action.payload,
+      };
     default:
       return state;
   }

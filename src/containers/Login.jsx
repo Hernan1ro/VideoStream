@@ -3,8 +3,10 @@ import "../assets/styles/Login.scss";
 import googleIcon from "../assets/static/google-icon.png";
 import twitterIcon from "../assets/static/twitter-icon.png";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { loginUser } from "../actions/index";
 
-const Login = () => {
+const Login = (props) => {
   const [form, setForm] = React.useState({
     email: "",
   });
@@ -16,7 +18,7 @@ const Login = () => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(form);
+    props.loginUser(form);
     const input = document.querySelectorAll(".input");
     console.log(input);
     input.forEach((input) => {
@@ -69,4 +71,8 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapDispatchToProps = {
+  loginUser,
+};
+
+export default connect(null, mapDispatchToProps)(Login);
