@@ -6,19 +6,26 @@ import deleteIcon from "../assets/static/iconDelete.png";
 import { setFavorites, deleteFavorite } from "../actions/index";
 import { connect } from "react-redux";
 
-const CarouselItem = ({
-  id,
-  cover,
-  title,
-  year,
-  contentRating,
-  duration,
-  setFavorites,
-  deleteFavorite,
-  isList,
-}) => {
+const CarouselItem = (props) => {
+  const {
+    id,
+    cover,
+    title,
+    year,
+    contentRating,
+    duration,
+    setFavorites,
+    deleteFavorite,
+    isList,
+    myList,
+  } = props;
+
   const handleAddList = () => {
-    setFavorites({ id, cover, title, year, contentRating, duration });
+    const favorite = { id, cover, title, year, contentRating, duration };
+
+    console.log(myList.includes(favorite));
+
+    setFavorites(favorite);
   };
   const handleDeleteFav = (id) => {
     deleteFavorite({ id, cover, title, year, contentRating, duration });
@@ -64,5 +71,10 @@ const mapDispatchToProps = {
   setFavorites,
   deleteFavorite,
 };
+const mapStateToProps = (state) => {
+  return {
+    myList: state.myList,
+  };
+};
 
-export default connect(null, mapDispatchToProps)(CarouselItem);
+export default connect(mapStateToProps, mapDispatchToProps)(CarouselItem);

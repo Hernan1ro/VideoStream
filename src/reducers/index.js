@@ -1,10 +1,17 @@
 const reducer = (state, action) => {
   switch ((state, action.type)) {
     case "SET_FAVORITES":
-      return {
-        ...state,
-        myList: [...state.myList, action.payload],
-      };
+      const listIds = state.myList.map((item) => item.id);
+      if (listIds.includes(action.payload.id)) {
+        return {
+          ...state,
+        };
+      } else {
+        return {
+          ...state,
+          myList: [...state.myList, action.payload],
+        };
+      }
     case "DELETE_FAVORITE":
       return {
         ...state,
