@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
-import Header from "../components/Header";
 import Search from "../components/Search";
 import Categories from "../components/Categories";
 import Carousel from "../components/Carousel";
 import CarouselItem from "../components/CarouselItem";
-import Footer from "../components/Footer";
 import "../assets/styles/App.scss";
 import { connect } from "react-redux";
 
 const Home = ({ myList = [], trends = [], originals }) => {
   return (
-    <div className="App">
-      <Header />
+    <>
       <Search />
       {myList.length > 0 && (
         <Categories title="Mi Lista">
@@ -36,8 +33,7 @@ const Home = ({ myList = [], trends = [], originals }) => {
           ))}
         </Carousel>
       </Categories>
-      <Footer />
-    </div>
+    </>
   );
 };
 
