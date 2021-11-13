@@ -7,9 +7,6 @@ import "../assets/styles/App.scss";
 import { connect } from "react-redux";
 
 const Home = ({ myList, trends, originals }) => {
-  console.log(myList, "misList");
-  console.log(trends, "trends");
-  console.log(originals, "originals");
   return (
     <>
       <Search />
