@@ -1,11 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const useInitialState = (API) => {
-  const [ videos, setVideos ] = useState([]);
+  const [videos, setVideos] = useState([]);
   useEffect(() => {
-    fetch(API)
-      .then(response => response.json())
-      .then(data => setVideos(data));
+    axios.get(API).then((response) => {
+      setVideos(response.data);
+    });
   }, []);
   return videos;
 };
