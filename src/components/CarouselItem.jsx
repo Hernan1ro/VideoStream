@@ -15,6 +15,7 @@ const CarouselItem = ({
   duration,
   setFavorites,
   deleteFavorite,
+  isList,
 }) => {
   const handleAddList = () => {
     setFavorites({ id, cover, title, year, contentRating, duration });
@@ -27,24 +28,27 @@ const CarouselItem = ({
       <img className="carousel-item__img" src={cover} alt={title} />
       <div className="carousel-item__details">
         <div>
+          {!isList ? (
+            <img
+              className="carousel-item__details--img"
+              src={plusIcon}
+              alt="Plus Icon"
+              onClick={handleAddList}
+            />
+          ) : (
+            <img
+              className="carousel-item__details--img"
+              src={deleteIcon}
+              alt="Delete button"
+              onClick={() => {
+                handleDeleteFav(id);
+              }}
+            />
+          )}
           <img
             className="carousel-item__details--img"
             src={playIcon}
             alt="Play Icon"
-          />
-          <img
-            className="carousel-item__details--img"
-            src={deleteIcon}
-            alt="Delete button"
-            onClick={() => {
-              handleDeleteFav(id);
-            }}
-          />
-          <img
-            className="carousel-item__details--img"
-            src={plusIcon}
-            alt="Plus Icon"
-            onClick={handleAddList}
           />
         </div>
         <p className="carousel-item__details--title">{title}</p>
