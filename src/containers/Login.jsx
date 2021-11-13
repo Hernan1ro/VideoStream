@@ -5,14 +5,46 @@ import twitterIcon from "../assets/static/twitter-icon.png";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  const [form, setForm] = React.useState({
+    email: "",
+  });
+  const handleInput = (event) => {
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value,
+    });
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(form);
+    const input = document.querySelectorAll(".input");
+    console.log(input);
+    input.forEach((input) => {
+      input.value = "";
+    });
+  };
   return (
     <section className="login">
       <section className="login__container">
         <h2>Inicia sesión</h2>
         <form className="login__container--form">
-          <input className="input" type="text" placeholder="Correo" />
-          <input className="input" type="password" placeholder="Contraseña" />
-          <button className="button">Iniciar sesión</button>
+          <input
+            className="input"
+            type="text"
+            placeholder="Correo"
+            name="email"
+            onChange={handleInput}
+          />
+          <input
+            className="input"
+            type="password"
+            placeholder="Contraseña"
+            name="password"
+            onChange={handleInput}
+          />
+          <button onClick={handleSubmit} type="submit" className="button">
+            Iniciar sesión
+          </button>
           <div className="login__container--remember-me">
             <label>
               <input type="checkbox" id="cbox1" defaultValue="first_checkbox" />

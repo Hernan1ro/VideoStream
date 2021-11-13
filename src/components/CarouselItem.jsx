@@ -17,14 +17,10 @@ const CarouselItem = (props) => {
     setFavorites,
     deleteFavorite,
     isList,
-    myList,
   } = props;
 
   const handleAddList = () => {
     const favorite = { id, cover, title, year, contentRating, duration };
-
-    console.log(myList.includes(favorite));
-
     setFavorites(favorite);
   };
   const handleDeleteFav = (id) => {
