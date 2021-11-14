@@ -34,7 +34,7 @@ const Header = (props) => {
         </div>
         <ul>
           <li>
-            <Link to="/register">{isLogin ? "Mi cuenta" : "Registrarse"}</Link>
+            <Link to="/register">{isLogin ? null : "Registrarse"}</Link>
           </li>
           <li>
             <Link to="/login" onClick={isLogin && handleLogout}>

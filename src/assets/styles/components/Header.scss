@@ -63,4 +63,6 @@ ul:hover {
 .header__menu--profile img {
   margin-right: 8px;
   width: 40px;
+  object-fit: cover;
+  border-radius: 50%;
 }
