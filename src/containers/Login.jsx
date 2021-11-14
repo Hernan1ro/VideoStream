@@ -2,6 +2,7 @@ import React from "react";
 import "../assets/styles/Login.scss";
 import googleIcon from "../assets/static/google-icon.png";
 import twitterIcon from "../assets/static/twitter-icon.png";
+import Header from "../components/Header";
 import { Link, useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { loginUser } from "../actions/index";
@@ -27,48 +28,55 @@ const Login = (props) => {
     navegate("/");
   };
   return (
-    <section className="login">
-      <section className="login__container">
-        <h2>Inicia sesión</h2>
-        <form className="login__container--form">
-          <input
-            className="input"
-            type="text"
-            placeholder="Correo"
-            name="email"
-            onChange={handleInput}
-          />
-          <input
-            className="input"
-            type="password"
-            placeholder="Contraseña"
-            name="password"
-            onChange={handleInput}
-          />
-          <button onClick={handleSubmit} type="submit" className="button">
-            Iniciar sesión
-          </button>
-          <div className="login__container--remember-me">
-            <label>
-              <input type="checkbox" id="cbox1" defaultValue="first_checkbox" />
-              Recuérdame
-            </label>
-            <Link to="/">Olvidé mi contraseña</Link>
-          </div>
-        </form>
-        <section className="login__container--social-media">
-          <div>
-            <img src={googleIcon} /> Inicia sesión con Google
-          </div>
-          <div>
-            <img src={twitterIcon} /> Inicia sesión con Twitter
-          </div>
+    <>
+      <Header bg="header-background-2" />
+      <section className="login">
+        <section className="login__container">
+          <h2>Inicia sesión</h2>
+          <form className="login__container--form">
+            <input
+              className="input"
+              type="text"
+              placeholder="Correo"
+              name="email"
+              onChange={handleInput}
+            />
+            <input
+              className="input"
+              type="password"
+              placeholder="Contraseña"
+              name="password"
+              onChange={handleInput}
+            />
+            <button onClick={handleSubmit} type="submit" className="button">
+              Iniciar sesión
+            </button>
+            <div className="login__container--remember-me">
+              <label>
+                <input
+                  type="checkbox"
+                  id="cbox1"
+                  defaultValue="first_checkbox"
+                />
+                Recuérdame
+              </label>
+              <Link to="/">Olvidé mi contraseña</Link>
+            </div>
+          </form>
+          <section className="login__container--social-media">
+            <div>
+              <img src={googleIcon} /> Inicia sesión con Google
+            </div>
+            <div>
+              <img src={twitterIcon} /> Inicia sesión con Twitter
+            </div>
+          </section>
+          <p className="login__container--register">
+            No tienes ninguna cuenta <Link to="/register">Regístrate</Link>
+          </p>
         </section>
-        <p className="login__container--register">
-          No tienes ninguna cuenta <Link to="/register">Regístrate</Link>
-        </p>
       </section>
-    </section>
+    </>
   );
 };
 

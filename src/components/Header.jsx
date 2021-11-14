@@ -19,7 +19,7 @@ const Header = (props) => {
     console.log(user, "user despues de cerrar");
   };
   return (
-    <header className="header">
+    <header className={`header ${props.bg}`}>
       <Link to="/">
         <img className="header__img" src={logo} alt="Platzi Video" />
       </Link>
