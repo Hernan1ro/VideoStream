@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { registerUser } from "../actions";
 
 const Register = (props) => {
-  console.log(props);
   let history = useNavigate();
   const [form, setForm] = useState({
     name: "",
@@ -21,7 +20,6 @@ const Register = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     props.registerUser(form);
-    console.log(form);
     history("/");
   };
   return (

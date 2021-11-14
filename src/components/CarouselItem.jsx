@@ -5,6 +5,7 @@ import plusIcon from "../assets/static/plus-icon.png";
 import deleteIcon from "../assets/static/iconDelete.png";
 import { setFavorites, deleteFavorite } from "../actions/index";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 const CarouselItem = (props) => {
   const {
@@ -48,11 +49,13 @@ const CarouselItem = (props) => {
               }}
             />
           )}
-          <img
-            className="carousel-item__details--img"
-            src={playIcon}
-            alt="Play Icon"
-          />
+          <Link to={`/player/${id}`}>
+            <img
+              className="carousel-item__details--img"
+              src={playIcon}
+              alt="Play Icon"
+            />
+          </Link>
         </div>
         <p className="carousel-item__details--title">{title}</p>
         <p className="carousel-item__details--subtitle">
