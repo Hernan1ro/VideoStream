@@ -13,3 +13,7 @@ export const loginUser = (payload) => {
     payload,
   };
 };
+export const logoutUser = (payload) => ({
+  type: "LOGOUT_USER",
+  payload,
+});

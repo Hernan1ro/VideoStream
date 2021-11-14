@@ -5,10 +5,19 @@ import userIcon from "../assets/static/user-icon.png";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import gravatar from "../utils/gravatar";
+import { logoutUser } from "../actions";
 
 const Header = (props) => {
   const { user } = props;
-  const isLogin = Object.keys(user).length > 0;
+  console.log(user);
+  let isLogin = Object.keys(user).length > 0;
+
+  const handleLogout = () => {
+    console.log("cerrando sesion...");
+    // user = {};
+    props.logoutUser({});
+    console.log(user, "user despues de cerrar");
+  };
   return (
     <header className="header">
       <Link to="/">
@@ -28,7 +37,7 @@ const Header = (props) => {
             <Link to="/register">{isLogin ? "Mi cuenta" : "Registrarse"}</Link>
           </li>
           <li>
-            <Link to="/login">
+            <Link to="/login" onClick={isLogin && handleLogout}>
               {isLogin ? "Cerrar sesión" : "Iniciar sesión"}
             </Link>
           </li>
@@ -44,5 +53,8 @@ const mapStateToProps = (state) => {
     user: state.user,
   };
 };
+const mapDispatchToProps = {
+  logoutUser,
+};
 
-export default connect(mapStateToProps, null)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
