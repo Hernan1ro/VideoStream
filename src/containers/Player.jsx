@@ -7,12 +7,10 @@ import NotFound from "./NotFound";
 
 const Player = (props) => {
   const id = useParams();
-  console.log(id);
   useEffect(() => {
     props.setPlaying(Number(id.id));
   }, []);
 
-  console.log(props.playing.source);
   const navegate = useNavigate();
 
   const hasPlaying = Object.keys(props.playing).length > 0;
