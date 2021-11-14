@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "../assets/styles/Register.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const Register = () => {
+const Register = (props) => {
+  let history = useNavigate();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -17,6 +18,7 @@ const Register = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(form);
+    history("/");
   };
   return (
     <section className="register">

@@ -2,11 +2,12 @@ import React from "react";
 import "../assets/styles/Login.scss";
 import googleIcon from "../assets/static/google-icon.png";
 import twitterIcon from "../assets/static/twitter-icon.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { loginUser } from "../actions/index";
 
 const Login = (props) => {
+  const navegate = useNavigate();
   const [form, setForm] = React.useState({
     email: "",
   });
@@ -23,6 +24,7 @@ const Login = (props) => {
     input.forEach((input) => {
       input.value = "";
     });
+    navegate("/");
   };
   return (
     <section className="login">
