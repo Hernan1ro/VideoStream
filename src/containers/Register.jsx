@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import "../assets/styles/Register.scss";
 import { Link, useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
+import { registerUser } from "../actions";
 
 const Register = (props) => {
+  console.log(props);
   let history = useNavigate();
   const [form, setForm] = useState({
     name: "",
@@ -17,6 +20,7 @@ const Register = (props) => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
+    props.registerUser(form);
     console.log(form);
     history("/");
   };
@@ -56,4 +60,8 @@ const Register = (props) => {
   );
 };
 
-export default Register;
+const mapDispatchToProps = {
+  registerUser,
+};
+
+export default connect(null, mapDispatchToProps)(Register);
