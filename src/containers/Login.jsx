@@ -20,7 +20,6 @@ const Login = (props) => {
     event.preventDefault();
     props.loginUser(form);
     const input = document.querySelectorAll(".input");
-    console.log(input);
     input.forEach((input) => {
       input.value = "";
     });
